@@ -2,12 +2,13 @@ import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 import StepContent from './StepContent';
 import FooterNav from './FooterNav';
-import { StepId } from './steps/steps';
+import { StepId, Step } from './steps/steps';
+
 
 type Props = {
   activeStep: StepId;
   setActiveStep: (step: StepId) => void;
-  steps: any[];
+  steps: readonly Step[];
 };
 
 export default function ConfigureLayout({

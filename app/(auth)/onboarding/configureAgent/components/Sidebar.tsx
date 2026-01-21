@@ -5,13 +5,13 @@ import ProgressBar from './ProgressBar';
 import Image from 'next/image';
 import { Info } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
-import { agentsData, getAgentById } from '@/app/constants/agentsData';
+import {getAgentById } from '@/app/constants/agentsData';
 import { Step, StepId } from './steps/steps';
 
 type Props = {
   activeStep: StepId;
   setActiveStep: (step: StepId) => void;
-  steps: Step[];
+  steps: readonly Step[];
 };
 
 export default function Sidebar({

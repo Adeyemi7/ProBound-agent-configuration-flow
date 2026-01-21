@@ -1,7 +1,7 @@
 import { StepId } from './steps/steps';
 
 type Props = {
-  steps: any[];
+  steps: readonly Step[];
   activeStep: StepId;
   setActiveStep: (step: StepId) => void;
 };
