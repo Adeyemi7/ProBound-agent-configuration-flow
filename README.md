@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Probound Agent Onboarding & Configuration Flow 🚀
 
-## Getting Started
+This repository contains the complete frontend onboarding flow for **Probound**. It includes the **Agent Selection Screen** and the **Multi-Step Configuration Wizard**, designed to guide users from selecting an AI workforce agent to fully customizing its identity, behavior, and tools.
 
-First, run the development server:
+**Live Demo:** [https://pro-bound-agent-configuration-flow-pearl.vercel.app/onboarding/chooseAgent](https://pro-bound-agent-configuration-flow-pearl.vercel.app/onboarding/chooseAgent)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🏗️ Modules Implemented
+
+### 1. Choose Agent Screen (Entry Point)
+**Path:** `/onboarding/chooseAgent`
+
+The landing page where users are introduced to the available AI Agents.
+* **Dynamic Card Grid:** Renders agent options (Triage, Dispatch, L1) dynamically from a shared `agentsData.ts` source of truth.
+* **Smart Routing:** Clicking "Hire Agent" automatically directs the user to the configuration wizard, passing the specific `agentId` via URL query parameters (e.g., `?agent=1`).
+* **Responsive Design:** Adapts from a single-column mobile view to a 3-column desktop grid.
+
+### 2. Configuration Wizard (The Flow)
+**Path:** `/onboarding/configureAgent`
+
+A production-ready, step-by-step interface for customizing the selected agent.
+* **Identity Step:** Profile picture upload (with client-side preview), voice selection, and naming.
+* **Behaviour Step:** Context-aware settings that change based on the agent selected (e.g., specific "Routing Logic" for Dispatch agents vs. "Prioritization Rules" for Triage agents).
+* **Knowledge Step:** File upload manager (PDF/DOCX) and URL scraper input for training the agent.
+* **Action Step:** Tool integration toggles (Slack, Zendesk, Twilio) and webhook configuration.
+
+---
+
+## 📂 Project Structure
+
+A clean, modular structure separating authentication flows, onboarding logic, and shared constants.
+
+```text
+app/
+├── (auth)/
+│   ├── login/
+│   └── onboarding/
+│       ├── chooseAgent/        
+│       │   └── page.tsx                # Agent Selection Page
+│       └── configureAgent/     
+│           ├── components/             # Wizard-specific components
+│           │   ├── steps/              # Step Logic & Layouts
+│           │   │   ├── ConfigureLayout.tsx
+│           │   │   ├── FooterNav.tsx
+│           │   │   ├── ProgressBar.tsx
+│           │   │   ├── Sidebar.tsx
+│           │   │   ├── StepContent.tsx
+│           │   │   ├── StepNav.tsx
+│           │   │   ├── TopNav.tsx
+│           │   │   ├── steps.ts        # Step definitions & types
+│           │   │   ├── IdentityForm.tsx
+│           │   │   ├── BehaviourStep.tsx
+│           │   │   ├── KnowledgeStep.tsx
+│           │   │   └── ActionStep.tsx
+│           ├── layout.tsx
+│           └── page.tsx                # Main Configuration Page
+├── (dashboard)/
+├── components/
+│   └── agentCard.tsx                   # Shared Agent Card Component
+└── constants/
+    └── agentsData.ts                   # Single Source of Truth for Agent Data
+``
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Here is the complete content formatted as a single Markdown file. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```markdown
+# ProBound Agent Configuration Flow 🚀
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This repository contains the frontend onboarding flow for ProBound, featuring an agent selection screen and a multi-step configuration wizard.
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+* **Framework:** Next.js 
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **Icons:** Lucide React
+* **State Management:** URL Search Params (`useSearchParams`) for shareable, stateless navigation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Setup & Run Instructions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**1. Clone the repository:**
 
-## Deploy on Vercel
+```bash
+git clone [https://github.com/Adeyemi7/ProBound-agent-configuration-flow.git](https://github.com/Adeyemi7/ProBound-agent-configuration-flow.git)
+cd ProBound-agent-configuration-flow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**2. Install dependencies:**
+
+```bash
+pnpm install
+# or
+npm install
+
+```
+
+**3. Run the development server:**
+
+```bash
+pnpm dev
+
+```
+
+**4. Start the flow:**
+
+Visit [http://localhost:3000/onboarding/chooseAgent](https://www.google.com/search?q=http://localhost:3000/onboarding/chooseAgent)
+
+## 📝 Design Decisions & Notes
+
+* **URL as State:** We intentionally avoided global state managers (Redux/Context) for the navigation flow. By keeping the `step` and `agent` ID in the URL, users can refresh the page or share the link without losing their place in the wizard.
+* **Centralized Data:** The `agentsData.ts` file powers both the *Choose Agent* screen and the *Sidebar* in the configuration flow. Updating an agent's description or image in that one file updates it everywhere in the app.
+* **Asset Handling:** Images are currently handled via the Next.js `Image` component. Ensure your `public/assets` folder matches the import paths in `agentsData.ts`.
+
+```
