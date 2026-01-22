@@ -8,12 +8,12 @@ export default function ProgressBar({ current, total }: Props) {
 
   return (
     <div className="space-y-2">
-      <div className="text-xs text-gray-500">
+      <div className="text-xs text-[rgba(113,113,122,1)]">
         Step {current}/{total}
       </div>
-      <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+      <div className="h-2.5 bg-[rgba(231,232,233,1)] rounded-full overflow-hidden">
         <div
-          className="h-full bg-gray-900 transition-all"
+          className="h-full bg-[rgba(156,163,175,1)] transition-all"
           style={{ width: `${percent}%` }}
         />
       </div>

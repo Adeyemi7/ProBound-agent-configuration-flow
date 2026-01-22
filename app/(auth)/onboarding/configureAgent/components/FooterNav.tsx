@@ -25,7 +25,7 @@ export default function FooterNav() {
       <button
         onClick={goNext}
         disabled={!nextStep}
-        className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors"
+        className="flex items-center gap-2 px-6 py-3 bg-[rgba(156,163,175,1)] text-[rgba(250,250,250,1)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-800 transition-colors"
       >
         Next
         <ArrowRight size={18} />

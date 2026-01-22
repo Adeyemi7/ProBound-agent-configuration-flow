@@ -27,7 +27,7 @@ export default function Sidebar({
   const currentStepIndex = steps.findIndex(s => s.id === activeStep);
 
   return (
-    <aside className="w-full lg:w-[320px] bg-[#F9FAFB] p-8 border-r flex flex-col">
+    <aside className="w-full lg:w-[426px] bg-[rgba(243,244,246,1)] p-8 border-r border-[rgba(243,244,246,1)] flex flex-col">
       {/* Agent Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
@@ -48,7 +48,7 @@ export default function Sidebar({
         </div>
 
         <p className="text-sm text-gray-600">
-          Configure your {agent?.title.toLowerCase()} to match your needs.
+         Thanks for confirming your email. Let’s get you set up. Tell us about your business 
         </p>
       </div>
 
@@ -58,13 +58,13 @@ export default function Sidebar({
         setActiveStep={setActiveStep}
       />
 
-      <div className="mt-auto pt-2">
-        <button className="w-full py-2.5 mb-4 border rounded-lg text-sm">
+      <div className="mt-auto pt-2 border-t border-t-[rgba(228,228,231,1)]">
+        <button className="w-full py-2.5 mb-4 border-[rgba(228,228,231,1)] border rounded-lg text-sm text-[rgba(18,18,18,0.6)] hover:bg-gray-200 transition-colors">
           Configure later
         </button>
 
-        <div className="flex items-center gap-2 text-xs text-gray-400 mb-6">
-          <Info size={14} />
+        <div className="flex items-center gap-2 text-xs text-[rgba(11,6,26,1)] mb-6 ">
+          <Info strokeWidth={2} size={14} className='font-bold' />
           You can always configure on your dashboard
         </div>
 

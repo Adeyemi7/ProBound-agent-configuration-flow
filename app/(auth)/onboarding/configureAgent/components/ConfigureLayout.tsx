@@ -20,7 +20,7 @@ export default function ConfigureLayout({
    <main className='w-[90%] mx-auto bg-white min-h-full pb-10' >
       <TopNav />
 
-      <div className="flex flex-col lg:flex-row w-full min-h-[700px] bg-white border rounded-3xl overflow-hidden">
+      <div className="flex flex-col lg:flex-row w-full min-h-[700px] bg-white border border-[rgba(243,244,246,1)] rounded-3xl overflow-hidden">
         <Sidebar
           activeStep={activeStep}
           setActiveStep={setActiveStep}
