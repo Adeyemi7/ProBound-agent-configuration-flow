@@ -1,3 +1,7 @@
+<img width="1366" height="768" alt="Screenshot (10)" src="https://github.com/user-attachments/assets/04f738da-5c7e-42b0-af6e-d96a80b2452d" />
+
+<img width="1366" height="768" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/f7b716c4-1784-4d54-b8d2-9706e2c5df16" />
+
 # Probound Agent Onboarding & Configuration Flow 🚀
 
 This repository contains the complete frontend onboarding flow for **Probound**. It includes the **Agent Selection Screen** and the **Multi-Step Configuration Wizard**, designed to guide users from selecting an AI workforce agent to fully customizing its identity, behavior, and tools.
